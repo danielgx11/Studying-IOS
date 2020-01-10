@@ -18,6 +18,25 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let vc = ViewController.instantiate()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func loginViewController(){
+        let vc = LoginViewController.instantiate()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func signupViewController(){
+        let vc = SignupViewController.instantiate()
+        vc.coordinator = self
+        navigationController.pushViewController(vc, animated: true)
+    }
+    
+    func passengerViewController(){
+        let vc = PassengerViewController.instantiate()
+        vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
 }
