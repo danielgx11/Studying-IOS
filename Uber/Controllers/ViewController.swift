@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ViewController: UIViewController, Storyboarded {
     
@@ -28,6 +29,19 @@ class ViewController: UIViewController, Storyboarded {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        let autentication = Auth.auth()
+        //logoutUser()
+        
+        autentication.addStateDidChangeListener { (autentication, user) in
+            if let loginUser = user {
+                self.coordinator?.passengerViewController()
+            }
+            else {
+                
+            }
+        }
+        
 
     }
     
@@ -48,6 +62,17 @@ class ViewController: UIViewController, Storyboarded {
         let confirmAction = UIAlertAction(title: "Confirm", style: .default, handler: nil)
         alertController.addAction(confirmAction)
         present(alertController, animated: true, completion: nil)
+    }
+    
+    //Logout user
+    
+    func logoutUser(){
+        let autentication = Auth.auth()
+        do {
+            try autentication.signOut()
+        } catch let error {
+            allertController(titulo: "Observação", message: "O usuário não pode ser deslogado devido ao erro \(error)")
+        }
     }
     
     override var prefersStatusBarHidden: Bool {

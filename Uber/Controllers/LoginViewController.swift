@@ -26,7 +26,7 @@ class LoginViewController: UIViewController, Storyboarded {
                     autentication.signIn(withEmail: recoveredEmail, password: recoveredPassword) { (usuario, erro) in
                             if erro == nil {
                                 if usuario != nil {
-                                    self.allertController(titulo: "Observação", message: "Usuário autenticado com sucesso!")
+                                    self.coordinator?.passengerViewController()
                                 }
                             }
                             else {

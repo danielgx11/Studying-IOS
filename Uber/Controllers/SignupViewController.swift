@@ -36,6 +36,13 @@ class SignupViewController: UIViewController, Storyboarded {
                             autentication.createUser(withEmail: recoveredEmail, password: recoveredPassword) { (usuario, erro) in
                                     if erro == nil {
                                         self.allertController(titulo: "Observação", message: "Sucesso ao criar conta!")
+                                        //Validation login
+                                        if usuario != nil {
+                                            self.coordinator?.passengerViewController()
+                                        }
+                                        else {
+                                            self.allertController(titulo: "Observação", message: "Erro ao autenticar usuário!")
+                                            }
                                         }
                                         else {
                                             self.allertController(titulo: "Observação", message: "Erro \(String(describing: erro)) ao criar conta!")
