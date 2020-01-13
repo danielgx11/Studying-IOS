@@ -16,6 +16,7 @@ class SignupViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     let viewController = ViewController()
+    var kind = ""
     
     //MARK: -Outlets
     
@@ -36,7 +37,7 @@ class SignupViewController: UIViewController, Storyboarded {
                         if let recoveredPassword = self.passwordText.text {
                             autentication.createUser(withEmail: recoveredEmail, password: recoveredPassword) { (user, erro) in
                                     if erro == nil {
-                                        self.allertController(titulo: "Observação", message: "Sucesso ao criar conta!")
+//                                        self.allertController(titulo: "Observação", message: "Sucesso ao criar conta!")
                                         //Validation login
                                         if user != nil {
                                             
@@ -45,19 +46,18 @@ class SignupViewController: UIViewController, Storyboarded {
                                             let users = database.child("usuarios")
                                             
                                             //User kind
-                                            var kind = ""
                                             if self.userKindSwitch.isOn {//Passenger
-                                                kind = "Passageiro"
+                                                self.kind = "Passageiro"
                                             }
                                             else {//Driver
-                                                kind = "Motorista"
+                                                self.kind = "Motorista"
                                             }
                                             
                                             //Save user data in FirebaseDatabase
                                             let userData = [
                                                 "email" : recoveredEmail ,
                                                 "nome" : recoveredName ,
-                                                "tipo" : kind
+                                                "tipo" : self.kind
                                             ]
                                             
                                             //Save data
@@ -82,6 +82,12 @@ class SignupViewController: UIViewController, Storyboarded {
         }
         else {
             allertController(titulo: "Observação", message: "O campo \(returnConfirm) não foi preenchido")
+        }
+        if kind == "Passageiro" {
+            self.coordinator?.passengerViewController()
+        }
+        else if kind == "Motorista"{
+            self.coordinator?.driverTableViewController()
         }
     }
     

@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class ViewController: UIViewController, Storyboarded {
     
@@ -31,18 +32,30 @@ class ViewController: UIViewController, Storyboarded {
         super.viewDidLoad()
         
         let autentication = Auth.auth()
-        //logoutUser()
         
+        //Navigation between views
         autentication.addStateDidChangeListener { (autentication, user) in
             if let loginUser = user {
-                self.coordinator?.passengerViewController()
-            }
-            else {
                 
+                //Verify user kind
+                let database = Database.database().reference()
+                let users = database.child("usuarios").child(loginUser.uid)
+                
+                users.observeSingleEvent(of: .value) { (snapshot) in
+                    
+                    let data = snapshot.value as? NSDictionary
+                    if (data != nil){
+                        let userKind = data!["tipo"] as! String
+                        if userKind == "Passageiro"{
+                            self.coordinator?.passengerViewController()
+                        }
+                        else if userKind == "Motorista" {
+                            self.coordinator?.driverTableViewController()
+                        }
+                    }
+                }
             }
         }
-        
-
     }
     
     override func viewWillAppear(_ animated: Bool) {
