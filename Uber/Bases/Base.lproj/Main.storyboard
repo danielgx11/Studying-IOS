@@ -352,8 +352,7 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="loginButton:" destination="B78-ns-cRO" eventType="touchUpInside" id="OOr-Mv-keK"/>
-                                    <action selector="toCallUber:" destination="gna-9j-N3Z" eventType="touchUpInside" id="cwU-Ad-Hvx"/>
+                                    <action selector="toCallUber:" destination="gna-9j-N3Z" eventType="touchUpInside" id="M3N-tE-CzF"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -371,11 +370,40 @@
                     </view>
                     <connections>
                         <outlet property="map" destination="mpg-Ee-zKP" id="35q-8h-d0K"/>
+                        <outlet property="toCallUberOutlet" destination="ZbX-GF-zrG" id="siA-Na-la4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="p8Y-ud-IEf" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2248.8000000000002" y="112.89355322338831"/>
+        </scene>
+        <!--Driver Table View Controller-->
+        <scene sceneID="mSD-YW-TPH">
+            <objects>
+                <tableViewController storyboardIdentifier="DriverTableViewController" id="1yb-Y2-CCW" customClass="DriverTableViewController" customModule="Uber" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="H0W-KO-eXB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="5EF-Yx-gs0">
+                                <rect key="frame" x="0.0" y="28" width="375" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="5EF-Yx-gs0" id="NZL-f3-1rQ">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="1yb-Y2-CCW" id="8xv-iB-Lo1"/>
+                            <outlet property="delegate" destination="1yb-Y2-CCW" id="kfB-3W-js1"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="eTQ-Jx-gcH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2951" y="113"/>
         </scene>
     </scenes>
     <resources>

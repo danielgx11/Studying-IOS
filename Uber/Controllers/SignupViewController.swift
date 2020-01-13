@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseDatabase
 
 class SignupViewController: UIViewController, Storyboarded {
 
@@ -33,12 +34,34 @@ class SignupViewController: UIViewController, Storyboarded {
                 if let recoveredEmail = self.emailText.text {
                     if let recoveredName = self.completeNameText.text {
                         if let recoveredPassword = self.passwordText.text {
-                            autentication.createUser(withEmail: recoveredEmail, password: recoveredPassword) { (usuario, erro) in
+                            autentication.createUser(withEmail: recoveredEmail, password: recoveredPassword) { (user, erro) in
                                     if erro == nil {
                                         self.allertController(titulo: "Observação", message: "Sucesso ao criar conta!")
                                         //Validation login
-                                        if usuario != nil {
-                                            self.coordinator?.passengerViewController()
+                                        if user != nil {
+                                            
+                                            //Configure database
+                                            let database = Database.database().reference()
+                                            let users = database.child("usuarios")
+                                            
+                                            //User kind
+                                            var kind = ""
+                                            if self.userKindSwitch.isOn {//Passenger
+                                                kind = "Passageiro"
+                                            }
+                                            else {//Driver
+                                                kind = "Motorista"
+                                            }
+                                            
+                                            //Save user data in FirebaseDatabase
+                                            let userData = [
+                                                "email" : recoveredEmail ,
+                                                "nome" : recoveredName ,
+                                                "tipo" : kind
+                                            ]
+                                            
+                                            //Save data
+                                            users.child(String((user?.user.uid)!)).setValue(userData)
                                         }
                                         else {
                                             self.allertController(titulo: "Observação", message: "Erro ao autenticar usuário!")

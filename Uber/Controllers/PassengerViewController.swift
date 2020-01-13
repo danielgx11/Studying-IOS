@@ -19,22 +19,46 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
     var logoutButton: UIBarButtonItem?
     let viewController = ViewController()
     var locationManager = CLLocationManager()
+    var userLocation = CLLocationCoordinate2D()
+    var CallUber = false
     
     //MARK: -Outlets
     @IBOutlet weak var map: MKMapView!
+    @IBOutlet weak var toCallUberOutlet: UIButton!
+    
+    
     @IBAction func toCallUber(_ sender: Any) {
-        let database: DatabaseReference!
-        database = Database.database().reference()
-        let request = database.child("requests")
-
-        let userDatas = [
-            "email" : "danielgomes@ioasys.com.br",
-            "nome" : "Daniel Passageiro",
-            "latitude" : "1212121",
-            "longitude" : "2323231"
-        ]
-        request.childByAutoId().setValue(userDatas)
+        
+        let database = Database.database().reference()
+        let autentication = Auth.auth()
+        let request = database.child("requisicoes")
+        
+        if let userEmail = autentication.currentUser?.email {
+            
+            if self.CallUber {//uber to call
+                self.alternateToCallUber()
+                
+                //Remove request
+                let request = database.child("requisicoes")
+                request.queryOrdered(byChild: "email").queryEqual(toValue: userEmail).observeSingleEvent(of: .childAdded) { (snapshot) in
+                    snapshot.ref.removeValue()
+                }
+            }
+            else {//don't to call uber
+                self.alternateCancelButton()
+                
+                //Save request data
+                let userDatas = [
+                    "email" : userEmail,
+                    "nome" : "Daniel",
+                    "latitude" : self.userLocation.latitude,
+                    "longitude" : self.userLocation.longitude
+                    ] as [String : Any]
+                request.childByAutoId().setValue(userDatas)
+            }
+        }
     }
+    
     
     
     //MARK: -Life cycle
@@ -46,6 +70,18 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
     }
     
     //MARK: -Funcs
+    
+    func alternateCancelButton (){
+        self.toCallUberOutlet.setTitle("Cancelar Uber", for: .normal)
+        self.toCallUberOutlet.backgroundColor = UIColor(red: 0.831, green: 0.237, blue: 0.146, alpha: 1)
+        self.CallUber = true
+    }
+    
+    func alternateToCallUber(){
+        self.toCallUberOutlet.setTitle("Chamar Uber", for: .normal)
+        self.toCallUberOutlet.backgroundColor = UIColor(red: 17/255, green: 147/255, blue: 154/255, alpha: 1.0)
+        self.CallUber = false
+    }
     
     func customizeNavigationController(){
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -66,6 +102,9 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         if let coordinates = manager.location?.coordinate {
+            //Current user location
+            self.userLocation = coordinates
+            
             let region = MKCoordinateRegion(center: coordinates, latitudinalMeters: 200, longitudinalMeters: 200)
             map.setRegion(region, animated: true)
             
