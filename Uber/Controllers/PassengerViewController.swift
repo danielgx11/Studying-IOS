@@ -42,19 +42,35 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
                 let request = database.child("requisicoes")
                 request.queryOrdered(byChild: "email").queryEqual(toValue: userEmail).observeSingleEvent(of: .childAdded) { (snapshot) in
                     snapshot.ref.removeValue()
+                    
                 }
             }
             else {//don't to call uber
-                self.alternateCancelButton()
                 
-                //Save request data
-                let userDatas = [
-                    "email" : userEmail,
-                    "nome" : "Daniel",
-                    "latitude" : self.userLocation.latitude,
-                    "longitude" : self.userLocation.longitude
-                    ] as [String : Any]
-                request.childByAutoId().setValue(userDatas)
+                if let userId = autentication.currentUser?.uid {
+                    
+                    //Recovered passenger name
+                    let database = Database.database().reference()
+                    let users = database.child("usuarios").child(userId)
+                    
+                    users.observeSingleEvent(of: .value) { (snapshot) in
+                        
+                        let data = snapshot.value as? NSDictionary
+                        let userName = data!["nome"] as? String
+                        
+                        self.alternateCancelButton()
+                        
+                        //Save request data
+                        let userDatas = [
+                            "email" : userEmail,
+                            "nome" : userName,
+                            "latitude" : self.userLocation.latitude,
+                            "longitude" : self.userLocation.longitude
+                            ] as [String : Any]
+                        request.childByAutoId().setValue(userDatas)
+                        
+                    }
+                }
             }
         }
     }
@@ -91,11 +107,11 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
     }
     
     func locationManagement(){
+        
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBest
         locationManager.requestWhenInUseAuthorization()
         locationManager.startUpdatingLocation()
-        
 
     }
     

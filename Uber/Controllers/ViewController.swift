@@ -43,6 +43,7 @@ class ViewController: UIViewController, Storyboarded {
                 
                 users.observeSingleEvent(of: .value) { (snapshot) in
                     
+                    //Validation data
                     let data = snapshot.value as? NSDictionary
                     if (data != nil){
                         let userKind = data!["tipo"] as! String

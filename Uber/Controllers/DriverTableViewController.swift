@@ -7,15 +7,20 @@
 //
 
 import UIKit
+import MapKit
 import FirebaseAuth
 import FirebaseDatabase
 
-class DriverTableViewController: UITableViewController, Storyboarded {
+class DriverTableViewController: UITableViewController, CLLocationManagerDelegate, Storyboarded {
 
     //MARK: -Variables
     weak var coordinator: MainCoordinator?
     let viewController = ViewController()
+    let passengerViewController = PassengerViewController()
     var logoutButton: UIBarButtonItem?
+    var resquestList: [DataSnapshot] = []
+    var locationManager = CLLocationManager()
+    var driverLocation = CLLocationCoordinate2D()
     
     
     //MARK: -Outlets
@@ -24,23 +29,66 @@ class DriverTableViewController: UITableViewController, Storyboarded {
     //MARK: -Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         customizeNavigationController()
+        
+        //Driver location
+        passengerViewController.locationManagement()
+        
+        //Configure database
+        let database = Database.database().reference()
+        let requests = database.child("requisicoes")
+        
+        //Recovered requests
+        requests.observe(.childAdded) { (snapshot) in
+            
+            self.resquestList.append(snapshot)
+            self.tableView.reloadData()
+            
+        }
     }
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return self.resquestList.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+
+        // Configure the cell...
+        let snapshot = self.resquestList[indexPath.row]
+        if let data = snapshot.value as? [String: Any] {
+            
+            if let passengerLatitude = data["latitude"] as? Double {
+                if let passengerLongitude = data["longitude"] as? Double {
+                    
+                    let driverLocation = CLLocation(latitude: self.driverLocation.latitude, longitude: self.driverLocation.longitude)
+                    let passengerLocation = CLLocation(latitude: passengerLatitude, longitude: passengerLongitude)
+                    
+                    let distanceInMeters = driverLocation.distance(from: passengerLocation)
+                    
+                    let distanceInKm = distanceInMeters/1000
+                    
+                    cell.textLabel?.text = data["nome"] as? String
+                    cell.detailTextLabel?.text = "\(distanceInKm) KM de distância"
+                }
+            }
+            
+        }
+
+        return cell
     }
     
     //MARK: -Funcs
 
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        if let coordinate = manager.location?.coordinate {
+            self.driverLocation = coordinate
+        }
+    }
     
     func customizeNavigationController(){
         self.navigationController?.setNavigationBarHidden(false, animated: true)
@@ -55,15 +103,7 @@ class DriverTableViewController: UITableViewController, Storyboarded {
         self.coordinator?.start()
     }
     
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
 
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.
