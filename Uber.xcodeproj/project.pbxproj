@@ -21,6 +21,7 @@
 		657A851B23C7C1BA00A8F53C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A851A23C7C1BA00A8F53C /* LoginViewController.swift */; };
 		657A851D23C7C1DF00A8F53C /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A851C23C7C1DF00A8F53C /* SignupViewController.swift */; };
 		657A851F23C80E0A00A8F53C /* PassengerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A851E23C80E0A00A8F53C /* PassengerViewController.swift */; };
+		65E225EA23D12A5E0055EA8A /* AcceptRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65E225E923D12A5E0055EA8A /* AcceptRequestViewController.swift */; };
 		92F77F1383C74043280664BC /* Pods_Uber.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 17E545E7737D5DC71D750130 /* Pods_Uber.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		657A851A23C7C1BA00A8F53C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		657A851C23C7C1DF00A8F53C /* SignupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		657A851E23C80E0A00A8F53C /* PassengerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PassengerViewController.swift; sourceTree = "<group>"; };
+		65E225E923D12A5E0055EA8A /* AcceptRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AcceptRequestViewController.swift; sourceTree = "<group>"; };
 		B9CD60266EBEE75D4CAB3EEA /* Pods-Uber.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Uber.debug.xcconfig"; path = "Target Support Files/Pods-Uber/Pods-Uber.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -108,6 +110,7 @@
 				657A851C23C7C1DF00A8F53C /* SignupViewController.swift */,
 				657A851E23C80E0A00A8F53C /* PassengerViewController.swift */,
 				6550CCFC23CBF84900B3D245 /* DriverTableViewController.swift */,
+				65E225E923D12A5E0055EA8A /* AcceptRequestViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -268,6 +271,7 @@
 				657A851D23C7C1DF00A8F53C /* SignupViewController.swift in Sources */,
 				657A851323C7AFC900A8F53C /* MainCoordinator.swift in Sources */,
 				657A84FE23C6AD0800A8F53C /* ViewController.swift in Sources */,
+				65E225EA23D12A5E0055EA8A /* AcceptRequestViewController.swift in Sources */,
 				657A851123C7ADF200A8F53C /* Storyboarded.swift in Sources */,
 				657A851F23C80E0A00A8F53C /* PassengerViewController.swift in Sources */,
 				6550CCFD23CBF84900B3D245 /* DriverTableViewController.swift in Sources */,

@@ -16,7 +16,6 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
     //MARK: -Variables
     weak var coordinator: MainCoordinator?
     let viewController = ViewController()
-    let passengerViewController = PassengerViewController()
     var logoutButton: UIBarButtonItem?
     var resquestList: [DataSnapshot] = []
     var locationManager = CLLocationManager()
@@ -33,7 +32,7 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         customizeNavigationController()
         
         //Driver location
-        passengerViewController.locationManagement()
+        self.locationManagement()
         
         //Configure database
         let database = Database.database().reference()
@@ -71,9 +70,10 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
                     let distanceInMeters = driverLocation.distance(from: passengerLocation)
                     
                     let distanceInKm = distanceInMeters/1000
+                    let endDistance = round(distanceInKm)
                     
                     cell.textLabel?.text = data["nome"] as? String
-                    cell.detailTextLabel?.text = "\(distanceInKm) KM de distância"
+                    cell.detailTextLabel?.text = "\(endDistance) KM de distância"
                 }
             }
             
@@ -82,12 +82,28 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        //Passing data by coordinator pattern
+        let snapshot = self.resquestList[indexPath.row]
+        self.coordinator?.acceptRequest(to: [snapshot])
+    }
+    
     //MARK: -Funcs
 
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         if let coordinate = manager.location?.coordinate {
             self.driverLocation = coordinate
         }
+    }
+    
+    func locationManagement(){
+        
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        locationManager.requestWhenInUseAuthorization()
+        locationManager.startUpdatingLocation()
+
     }
     
     func customizeNavigationController(){

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseDatabase
 
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
@@ -23,26 +24,33 @@ class MainCoordinator: Coordinator {
     }
     
     func loginViewController(){
-        let vc = LoginViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let loginViewController = LoginViewController.instantiate()
+        loginViewController.coordinator = self
+        navigationController.pushViewController(loginViewController, animated: true)
     }
     
     func signupViewController(){
-        let vc = SignupViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let signupViewController = SignupViewController.instantiate()
+        signupViewController.coordinator = self
+        navigationController.pushViewController(signupViewController, animated: true)
     }
     
     func passengerViewController(){
-        let vc = PassengerViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+        let passengerViewController = PassengerViewController.instantiate()
+        passengerViewController.coordinator = self
+        navigationController.pushViewController(passengerViewController, animated: true)
+    }
+  
+    func driverTableViewController(){
+        let driverTableViewController = DriverTableViewController.instantiate()
+        driverTableViewController.coordinator = self
+        navigationController.pushViewController(driverTableViewController, animated: true)
     }
     
-    func driverTableViewController(){
-        let vc = DriverTableViewController.instantiate()
-        vc.coordinator = self
-        navigationController.pushViewController(vc, animated: true)
+    func acceptRequest(to requestTapped: [DataSnapshot]){
+        let acceptRequestViewController = AcceptRequestViewController.instantiate()
+        acceptRequestViewController.selectedRequest = requestTapped
+        acceptRequestViewController.coordinaator = self
+        navigationController.pushViewController(acceptRequestViewController, animated: true)
     }
 }

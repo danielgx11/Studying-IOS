@@ -46,12 +46,15 @@ class ViewController: UIViewController, Storyboarded {
                     //Validation data
                     let data = snapshot.value as? NSDictionary
                     if (data != nil){
-                        let userKind = data!["tipo"] as! String
-                        if userKind == "Passageiro"{
-                            self.coordinator?.passengerViewController()
-                        }
-                        else if userKind == "Motorista" {
-                            self.coordinator?.driverTableViewController()
+                        if let userKind = data?["tipo"] as? String {
+                            
+                            if userKind == "Passageiro" {
+                                self.coordinator?.passengerViewController()
+                            }
+                            else if userKind == "Motorista"{
+                                self.coordinator?.driverTableViewController()
+                            }
+                            
                         }
                     }
                 }
@@ -92,5 +95,4 @@ class ViewController: UIViewController, Storyboarded {
     override var prefersStatusBarHidden: Bool {
         return true
     }
-
 }
