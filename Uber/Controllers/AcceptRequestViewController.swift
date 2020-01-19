@@ -15,17 +15,38 @@ class AcceptRequestViewController: UIViewController, Storyboarded {
     
     //MARK: -Outlets
     @IBOutlet weak var map: MKMapView!
+    @IBAction func toAcceptButton(_ sender: Any) {
+        //request update
+        let database = Database.database().reference()
+        let requests = database.child("Requisicoes")
+        
+        requests.queryOrdered(byChild: "email").queryEqual(toValue: self.passengerEmail).observeSingleEvent(of: .childAdded) { (snapshot) in
+            
+            //Update data
+            let driverData = [
+                "motoristaLatitude" : self.driverLocation.latitude,
+                "motoristaLongitude" : self.driverLocation.longitude
+            ]
+            
+            snapshot.ref.updateChildValues(driverData)
+            
+        }
+        
+        
+        //Show route to the passenger
+    }
     
     
     //MARK: -Variables
     
     weak var coordinaator: MainCoordinator?
-    var selectedRequest: [DataSnapshot] = []
     let driver = DriverTableViewController()
     var passengerName = ""
     var passengerEmail = ""
     var passengerLocation = CLLocationCoordinate2D()
     var driverLocation = CLLocationCoordinate2D()
+    
+    //MARK: -Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,17 +54,33 @@ class AcceptRequestViewController: UIViewController, Storyboarded {
         //Initial map location
         let region = MKCoordinateRegion(center: self.passengerLocation, latitudinalMeters: 200, longitudinalMeters: 200)
         map.setRegion(region, animated: true)
+        self.locationAnnotation(to: passengerName)
+    
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    //MARK: -Funcs
+    
+    func locationAnnotation(to passengerName: String){
+        let anotUser = MKPointAnnotation()
+        anotUser.coordinate = passengerLocation
+        anotUser.title = passengerName
+        map.addAnnotation(anotUser)
     }
-    */
-
+    
+    func updateRequest(){
+        let database = Database.database().reference()
+        let requests = database.child("Requisicoes")
+        
+        requests.queryOrdered(byChild: "email").queryEqual(toValue: self.passengerEmail).observeSingleEvent(of: .childAdded) { (snapshot) in
+            
+            //Update data
+            let driverData = [
+                "motoristaLatitude" : self.driverLocation.latitude,
+                "motoristaLongitude" : self.driverLocation.longitude
+            ]
+            
+            snapshot.ref.updateChildValues(driverData)
+            
+        }
+    }
 }

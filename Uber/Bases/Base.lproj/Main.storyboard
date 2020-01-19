@@ -442,6 +442,9 @@
                                 <state key="normal" title="Aceitar corrida">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="toAcceptButton:" destination="hDI-5e-42O" eventType="touchUpInside" id="JFh-dz-fJc"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>

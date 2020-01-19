@@ -86,7 +86,22 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         
         //Passing data by coordinator pattern
         let snapshot = self.resquestList[indexPath.row]
-        self.coordinator?.acceptRequest(to: [snapshot])
+        if let data = snapshot.value as? [String: Any] {
+            
+            if let passengerLatitude = data["latitude"] as? Double {
+                if let passengerLongitude = data["longitude"] as? Double {
+                    
+                    let driverLocation = CLLocationCoordinate2D(latitude: self.driverLocation.latitude, longitude: self.driverLocation.longitude)
+                    let passengerLocation = CLLocationCoordinate2D(latitude: passengerLatitude, longitude: passengerLongitude)
+                    
+                    let passengerName = data["nome"] as? String
+                    let passengerEmail = data["email"] as? String
+                    
+                    self.coordinator?.acceptRequest(to: driverLocation, passengerLocalization: passengerLocation, passengerName: passengerName!, passengerEmail: passengerEmail!)
+                }
+            }
+            
+        }
     }
     
     //MARK: -Funcs
@@ -118,52 +133,4 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
         self.viewController.logoutUser()
         self.coordinator?.start()
     }
-    
-
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

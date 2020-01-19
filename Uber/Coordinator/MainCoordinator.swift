@@ -8,6 +8,7 @@
 
 import UIKit
 import FirebaseDatabase
+import MapKit
 
 class MainCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
@@ -47,9 +48,12 @@ class MainCoordinator: Coordinator {
         navigationController.pushViewController(driverTableViewController, animated: true)
     }
     
-    func acceptRequest(to requestTapped: [DataSnapshot]){
+    func acceptRequest(to driverLocalization: Any, passengerLocalization: Any, passengerName: String, passengerEmail: String){
         let acceptRequestViewController = AcceptRequestViewController.instantiate()
-        acceptRequestViewController.selectedRequest = requestTapped
+        acceptRequestViewController.driverLocation = driverLocalization as! CLLocationCoordinate2D
+        acceptRequestViewController.passengerLocation = passengerLocalization as! CLLocationCoordinate2D
+        acceptRequestViewController.passengerName = passengerName
+        acceptRequestViewController.passengerEmail = passengerEmail
         acceptRequestViewController.coordinaator = self
         navigationController.pushViewController(acceptRequestViewController, animated: true)
     }
