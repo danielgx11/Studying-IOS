@@ -32,8 +32,23 @@ class AcceptRequestViewController: UIViewController, Storyboarded {
             
         }
         
-        
         //Show route to the passenger
+        
+        let passengerCLL = CLLocation(latitude: passengerLocation.latitude, longitude: passengerLocation.longitude)
+        CLGeocoder().reverseGeocodeLocation(passengerCLL) { (place, error) in
+            
+            if error == nil {
+                
+                if let locationData = place?.first {
+                    let placeMark = MKPlacemark(placemark: locationData)
+                    let itemMap = MKMapItem(placemark: placeMark)
+                    itemMap.name = self.passengerName
+                    
+                    let options = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+                    itemMap.openInMaps(launchOptions: options)
+                }
+            }
+        }
     }
     
     
