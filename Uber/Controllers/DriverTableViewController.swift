@@ -124,7 +124,7 @@ class DriverTableViewController: UITableViewController, CLLocationManagerDelegat
     func customizeNavigationController(){
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         self.navigationItem.hidesBackButton = true
-        self.navigationItem.title = "Requisições"
+        self.navigationItem.title = "requisições"
         self.navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Sair", style: .plain, target: self, action: #selector(DriverTableViewController.addTapped(_:)) )
     }
     

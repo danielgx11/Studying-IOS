@@ -20,7 +20,9 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
     let viewController = ViewController()
     var locationManager = CLLocationManager()
     var userLocation = CLLocationCoordinate2D()
+    var driverLocation = CLLocationCoordinate2D()
     var CallUber = false
+    var uberOnTheWay = false
     
     //MARK: -Outlets
     @IBOutlet weak var map: MKMapView!
@@ -85,11 +87,78 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
         locationManagement()
         
         //Check existing request
+        checkExistingRequest()
+        
+        //Driver accept ride
+        listernerAcceptDriver()
+    }
+    
+    //MARK: -Funcs
+    
+    func showDriverAndPassenger(){
+        
+        self.uberOnTheWay = true
+        
+        //Calculate distance between driver and passenger
+        let driverLocalization = CLLocation(latitude: self.driverLocation.latitude, longitude: self.driverLocation.longitude)
+        
+        let passengerLocalization = CLLocation(latitude: self.userLocation.latitude, longitude: self.userLocation.longitude)
+        
+        let distance = driverLocalization.distance(from: passengerLocalization)
+        let kmDistance = distance/1000
+        let endDistance = round(kmDistance)
+        
+        self.toCallUberOutlet.backgroundColor = UIColor(red: 0.831, green: 0.237, blue: 0.146, alpha: 1)
+        self.toCallUberOutlet.setTitle("Motorista a \(endDistance) KM de distância", for: .normal)
+        
+        
+        //Display driver and passenger in map
+        map.removeAnnotations(map.annotations)
+        
+        let region = MKCoordinateRegion(center: self.userLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+        map.setRegion(region, animated: true)
+        
+        //Driver annotation
+        let driverAnotation = MKPointAnnotation()
+        driverAnotation.coordinate = self.driverLocation
+        driverAnotation.title = "Motorista"
+        map.addAnnotation(driverAnotation)
+        
+        //Passenger annotation
+        let passengerAnotation = MKPointAnnotation()
+        passengerAnotation.coordinate = self.userLocation
+        passengerAnotation.title = "Passageiro"
+        map.addAnnotation(passengerAnotation)
+    }
+    
+    func listernerAcceptDriver(){
         let database = Database.database().reference()
         let autentication = Auth.auth()
         
         if let userEmail = autentication.currentUser?.email {
-            let requests = database.child("Requisicoes")
+            let requests = database.child("requisicoes")
+            let checkRequest = requests.queryOrdered(byChild: "email").queryEqual(toValue: userEmail)
+            
+            checkRequest.observe(.childChanged) { (snapshot) in
+                
+                if let data = snapshot.value as? [String: Any] {
+                    if let driverLatitude = data["motoristaLatitude"] {
+                        if let driverLongitude = data["motoristaLongitude"] {
+                            self.driverLocation = CLLocationCoordinate2D(latitude: driverLatitude as! CLLocationDegrees, longitude: driverLongitude as! CLLocationDegrees)
+                            self.showDriverAndPassenger()
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    func checkExistingRequest(){
+        let database = Database.database().reference()
+        let autentication = Auth.auth()
+        
+        if let userEmail = autentication.currentUser?.email {
+            let requests = database.child("requisicoes")
             let checkRequest = requests.queryOrdered(byChild: "email").queryEqual(toValue: userEmail)
             
             checkRequest.observe(.childAdded) { (snapshot) in
@@ -100,8 +169,6 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
             }
         }
     }
-    
-    //MARK: -Funcs
     
     func alternateCancelButton (){
         self.toCallUberOutlet.setTitle("Cancelar Uber", for: .normal)
