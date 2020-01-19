@@ -83,6 +83,22 @@ class PassengerViewController: UIViewController, Storyboarded, CLLocationManager
         super.viewDidLoad()
         customizeNavigationController()
         locationManagement()
+        
+        //Check existing request
+        let database = Database.database().reference()
+        let autentication = Auth.auth()
+        
+        if let userEmail = autentication.currentUser?.email {
+            let requests = database.child("Requisicoes")
+            let checkRequest = requests.queryOrdered(byChild: "email").queryEqual(toValue: userEmail)
+            
+            checkRequest.observe(.childAdded) { (snapshot) in
+                
+                if snapshot.value != nil {
+                    self.alternateCancelButton()
+                }
+            }
+        }
     }
     
     //MARK: -Funcs
