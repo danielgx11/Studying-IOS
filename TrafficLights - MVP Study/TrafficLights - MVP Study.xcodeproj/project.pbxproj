@@ -1,0 +1,418 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5CCC0068242308D4003830BA /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC0067242308D4003830BA /* AppDelegate.swift */; };
+		5CCC006A242308D4003830BA /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC0069242308D4003830BA /* SceneDelegate.swift */; };
+		5CCC006F242308D4003830BA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC006D242308D4003830BA /* Main.storyboard */; };
+		5CCC0072242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC0070242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodeld */; };
+		5CCC0074242308D6003830BA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC0073242308D6003830BA /* Assets.xcassets */; };
+		5CCC0077242308D6003830BA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 5CCC0075242308D6003830BA /* LaunchScreen.storyboard */; };
+		5CCC00842423094E003830BA /* TrafficLight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC00832423094E003830BA /* TrafficLight.swift */; };
+		5CCC0087242309BD003830BA /* TrafficLightService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC0086242309BD003830BA /* TrafficLightService.swift */; };
+		5CCC008924230B80003830BA /* TrafficLightPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC008824230B80003830BA /* TrafficLightPresenter.swift */; };
+		5CCC008B24230D6E003830BA /* TrafficLightViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CCC008A24230D6E003830BA /* TrafficLightViewController.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		5CCC0064242308D4003830BA /* TrafficLights - MVP Study.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "TrafficLights - MVP Study.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CCC0067242308D4003830BA /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		5CCC0069242308D4003830BA /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		5CCC006E242308D4003830BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		5CCC0071242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "TrafficLights___MVP_Study.xcdatamodel"; sourceTree = "<group>"; };
+		5CCC0073242308D6003830BA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		5CCC0076242308D6003830BA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		5CCC0078242308D6003830BA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		5CCC00832423094E003830BA /* TrafficLight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLight.swift; sourceTree = "<group>"; };
+		5CCC0086242309BD003830BA /* TrafficLightService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightService.swift; sourceTree = "<group>"; };
+		5CCC008824230B80003830BA /* TrafficLightPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightPresenter.swift; sourceTree = "<group>"; };
+		5CCC008A24230D6E003830BA /* TrafficLightViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrafficLightViewController.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		5CCC0061242308D4003830BA /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		5CCC005B242308D4003830BA = {
+			isa = PBXGroup;
+			children = (
+				5CCC0066242308D4003830BA /* TrafficLights - MVP Study */,
+				5CCC0065242308D4003830BA /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5CCC0065242308D4003830BA /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC0064242308D4003830BA /* TrafficLights - MVP Study.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5CCC0066242308D4003830BA /* TrafficLights - MVP Study */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC0081242308FB003830BA /* Delegates */,
+				5CCC008224230903003830BA /* Storyboards */,
+				5CCC007F242308E9003830BA /* Models */,
+				5CCC007E242308E1003830BA /* Views */,
+				5CCC0080242308EF003830BA /* Presenter */,
+				5CCC0085242309AA003830BA /* Controllers */,
+				5CCC0073242308D6003830BA /* Assets.xcassets */,
+				5CCC0078242308D6003830BA /* Info.plist */,
+				5CCC0070242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodeld */,
+			);
+			path = "TrafficLights - MVP Study";
+			sourceTree = "<group>";
+		};
+		5CCC007E242308E1003830BA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC008A24230D6E003830BA /* TrafficLightViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CCC007F242308E9003830BA /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC00832423094E003830BA /* TrafficLight.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		5CCC0080242308EF003830BA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC008824230B80003830BA /* TrafficLightPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5CCC0081242308FB003830BA /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC0069242308D4003830BA /* SceneDelegate.swift */,
+				5CCC0067242308D4003830BA /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		5CCC008224230903003830BA /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC006D242308D4003830BA /* Main.storyboard */,
+				5CCC0075242308D6003830BA /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5CCC0085242309AA003830BA /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				5CCC0086242309BD003830BA /* TrafficLightService.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5CCC0063242308D4003830BA /* TrafficLights - MVP Study */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 5CCC007B242308D6003830BA /* Build configuration list for PBXNativeTarget "TrafficLights - MVP Study" */;
+			buildPhases = (
+				5CCC0060242308D4003830BA /* Sources */,
+				5CCC0061242308D4003830BA /* Frameworks */,
+				5CCC0062242308D4003830BA /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "TrafficLights - MVP Study";
+			productName = "TrafficLights - MVP Study";
+			productReference = 5CCC0064242308D4003830BA /* TrafficLights - MVP Study.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		5CCC005C242308D4003830BA /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1120;
+				LastUpgradeCheck = 1120;
+				ORGANIZATIONNAME = "Daniel Gx";
+				TargetAttributes = {
+					5CCC0063242308D4003830BA = {
+						CreatedOnToolsVersion = 11.2.1;
+					};
+				};
+			};
+			buildConfigurationList = 5CCC005F242308D4003830BA /* Build configuration list for PBXProject "TrafficLights - MVP Study" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 5CCC005B242308D4003830BA;
+			productRefGroup = 5CCC0065242308D4003830BA /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5CCC0063242308D4003830BA /* TrafficLights - MVP Study */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		5CCC0062242308D4003830BA /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CCC0077242308D6003830BA /* LaunchScreen.storyboard in Resources */,
+				5CCC0074242308D6003830BA /* Assets.xcassets in Resources */,
+				5CCC006F242308D4003830BA /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		5CCC0060242308D4003830BA /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5CCC008924230B80003830BA /* TrafficLightPresenter.swift in Sources */,
+				5CCC0087242309BD003830BA /* TrafficLightService.swift in Sources */,
+				5CCC0072242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodeld in Sources */,
+				5CCC0068242308D4003830BA /* AppDelegate.swift in Sources */,
+				5CCC008B24230D6E003830BA /* TrafficLightViewController.swift in Sources */,
+				5CCC006A242308D4003830BA /* SceneDelegate.swift in Sources */,
+				5CCC00842423094E003830BA /* TrafficLight.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		5CCC006D242308D4003830BA /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CCC006E242308D4003830BA /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		5CCC0075242308D6003830BA /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				5CCC0076242308D6003830BA /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		5CCC0079242308D6003830BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		5CCC007A242308D6003830BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		5CCC007C242308D6003830BA /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "TrafficLights - MVP Study/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danielgx.TrafficLights---MVP-Study";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		5CCC007D242308D6003830BA /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = "TrafficLights - MVP Study/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "com.danielgx.TrafficLights---MVP-Study";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		5CCC005F242308D4003830BA /* Build configuration list for PBXProject "TrafficLights - MVP Study" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CCC0079242308D6003830BA /* Debug */,
+				5CCC007A242308D6003830BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		5CCC007B242308D6003830BA /* Build configuration list for PBXNativeTarget "TrafficLights - MVP Study" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				5CCC007C242308D6003830BA /* Debug */,
+				5CCC007D242308D6003830BA /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5CCC0070242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5CCC0071242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodel */,
+			);
+			currentVersion = 5CCC0071242308D4003830BA /* TrafficLights___MVP_Study.xcdatamodel */;
+			path = "TrafficLights___MVP_Study.xcdatamodeld";
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 5CCC005C242308D4003830BA /* Project object */;
+}
