@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C01500D2423F765005A254B /* BitcoinPricePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C01500C2423F765005A254B /* BitcoinPricePresenter.swift */; };
 		CC92A8E522445AF000C9E32F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC92A8E422445AF000C9E32F /* AppDelegate.swift */; };
 		CC92A8E722445AF000C9E32F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC92A8E622445AF000C9E32F /* ViewController.swift */; };
 		CC92A8EA22445AF000C9E32F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC92A8E822445AF000C9E32F /* Main.storyboard */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C01500C2423F765005A254B /* BitcoinPricePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BitcoinPricePresenter.swift; sourceTree = "<group>"; };
 		CC92A8E122445AF000C9E32F /* Preco do Bitcoin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Preco do Bitcoin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC92A8E422445AF000C9E32F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CC92A8E622445AF000C9E32F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +37,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C0150082423F724005A254B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CC92A8E822445AF000C9E32F /* Main.storyboard */,
+				CC92A8ED22445AF500C9E32F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5C0150092423F729005A254B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CC92A8E622445AF000C9E32F /* ViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5C01500A2423F735005A254B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				5C01500C2423F765005A254B /* BitcoinPricePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		5C01500B2423F738005A254B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CC92A8E422445AF000C9E32F /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
 		CC92A8D822445AF000C9E32F = {
 			isa = PBXGroup;
 			children = (
@@ -54,12 +89,12 @@
 		CC92A8E322445AF000C9E32F /* Preco do Bitcoin */ = {
 			isa = PBXGroup;
 			children = (
-				CC92A8E422445AF000C9E32F /* AppDelegate.swift */,
-				CC92A8E622445AF000C9E32F /* ViewController.swift */,
-				CC92A8E822445AF000C9E32F /* Main.storyboard */,
 				CC92A8EB22445AF500C9E32F /* Assets.xcassets */,
-				CC92A8ED22445AF500C9E32F /* LaunchScreen.storyboard */,
 				CC92A8F022445AF500C9E32F /* Info.plist */,
+				5C01500B2423F738005A254B /* Delegates */,
+				5C0150092423F729005A254B /* Controllers */,
+				5C01500A2423F735005A254B /* Presenter */,
+				5C0150082423F724005A254B /* Storyboards */,
 			);
 			path = "Preco do Bitcoin";
 			sourceTree = "<group>";
@@ -136,6 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CC92A8E722445AF000C9E32F /* ViewController.swift in Sources */,
+				5C01500D2423F765005A254B /* BitcoinPricePresenter.swift in Sources */,
 				CC92A8E522445AF000C9E32F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
