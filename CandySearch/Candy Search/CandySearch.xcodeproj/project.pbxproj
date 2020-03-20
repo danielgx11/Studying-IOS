@@ -45,6 +45,42 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5CE4D538242556DE001F0BA7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
+				5394F02321864DF4006E754C /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5CE4D539242556E3001F0BA7 /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		5CE4D53A242556E6001F0BA7 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				A832329222D256E300BD4DD5 /* DetailViewController.swift */,
+				A832329422D256E300BD4DD5 /* MasterViewController.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		5CE4D53B242556E9001F0BA7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				A832329322D256E300BD4DD5 /* Candy.swift */,
+				A832329522D256E300BD4DD5 /* CandyTheme.swift */,
+				A832329122D256E300BD4DD5 /* SearchFooter.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		D2A5F1F71F4A9143005CD714 = {
 			isa = PBXGroup;
 			children = (
@@ -66,14 +102,10 @@
 		D2A5F2021F4A9144005CD714 /* CandySearch */ = {
 			isa = PBXGroup;
 			children = (
-				A832329322D256E300BD4DD5 /* Candy.swift */,
-				A832329522D256E300BD4DD5 /* CandyTheme.swift */,
-				A832329222D256E300BD4DD5 /* DetailViewController.swift */,
-				A832329422D256E300BD4DD5 /* MasterViewController.swift */,
-				A832329122D256E300BD4DD5 /* SearchFooter.swift */,
-				D2A5F2201F4A96D0005CD714 /* AppDelegate.swift */,
-				D2A5F2071F4A9144005CD714 /* Main.storyboard */,
-				5394F02321864DF4006E754C /* LaunchScreen.storyboard */,
+				5CE4D539242556E3001F0BA7 /* Delegates */,
+				5CE4D53B242556E9001F0BA7 /* Model */,
+				5CE4D53A242556E6001F0BA7 /* Views */,
+				5CE4D538242556DE001F0BA7 /* Storyboards */,
 				D2A5F20A1F4A9144005CD714 /* Assets.xcassets */,
 				D2A5F20F1F4A9144005CD714 /* Info.plist */,
 				A832329B22D257EB00BD4DD5 /* candies.json */,

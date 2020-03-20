@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5C0150152423FD1F005A254B /* AddNotePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0150142423FD1F005A254B /* AddNotePresenter.swift */; };
+		5C0150172423FD30005A254B /* NotesTableViewListPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C0150162423FD30005A254B /* NotesTableViewListPresenter.swift */; };
 		CCA4F02F22592CAE00A2817F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA4F02E22592CAE00A2817F /* AppDelegate.swift */; };
 		CCA4F03122592CAE00A2817F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCA4F03022592CAE00A2817F /* ViewController.swift */; };
 		CCA4F03422592CAE00A2817F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CCA4F03222592CAE00A2817F /* Main.storyboard */; };
@@ -17,6 +19,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5C0150142423FD1F005A254B /* AddNotePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNotePresenter.swift; sourceTree = "<group>"; };
+		5C0150162423FD30005A254B /* NotesTableViewListPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesTableViewListPresenter.swift; sourceTree = "<group>"; };
 		CCA4F02B22592CAE00A2817F /* Notas Diarias.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Notas Diarias.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		CCA4F02E22592CAE00A2817F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CCA4F03022592CAE00A2817F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -25,7 +29,7 @@
 		CCA4F03822592CB200A2817F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		CCA4F03B22592CB200A2817F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CCA4F03D22592CB200A2817F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCA4F04322592CD300A2817F /* ListagemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ListagemTableViewController.swift; path = ../ListagemTableViewController.swift; sourceTree = "<group>"; };
+		CCA4F04322592CD300A2817F /* ListagemTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListagemTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +43,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5C01500E2423FCB5005A254B /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				CCA4F02E22592CAE00A2817F /* AppDelegate.swift */,
+			);
+			path = Delegates;
+			sourceTree = "<group>";
+		};
+		5C01500F2423FCC0005A254B /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				CCA4F03222592CAE00A2817F /* Main.storyboard */,
+				CCA4F03A22592CB200A2817F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		5C0150102423FCC8005A254B /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				CCA4F03022592CAE00A2817F /* ViewController.swift */,
+				CCA4F04322592CD300A2817F /* ListagemTableViewController.swift */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		5C0150112423FCCD005A254B /* Presenters */ = {
+			isa = PBXGroup;
+			children = (
+				5C0150142423FD1F005A254B /* AddNotePresenter.swift */,
+				5C0150162423FD30005A254B /* NotesTableViewListPresenter.swift */,
+			);
+			path = Presenters;
+			sourceTree = "<group>";
+		};
 		CCA4F02222592CAE00A2817F = {
 			isa = PBXGroup;
 			children = (
@@ -58,14 +97,13 @@
 		CCA4F02D22592CAE00A2817F /* Notas Diarias */ = {
 			isa = PBXGroup;
 			children = (
-				CCA4F02E22592CAE00A2817F /* AppDelegate.swift */,
-				CCA4F04322592CD300A2817F /* ListagemTableViewController.swift */,
-				CCA4F03022592CAE00A2817F /* ViewController.swift */,
-				CCA4F03222592CAE00A2817F /* Main.storyboard */,
 				CCA4F03822592CB200A2817F /* Assets.xcassets */,
-				CCA4F03A22592CB200A2817F /* LaunchScreen.storyboard */,
 				CCA4F03D22592CB200A2817F /* Info.plist */,
 				CCA4F03522592CAE00A2817F /* Notas_Diarias.xcdatamodeld */,
+				5C01500E2423FCB5005A254B /* Delegates */,
+				5C0150112423FCCD005A254B /* Presenters */,
+				5C0150102423FCC8005A254B /* Controllers */,
+				5C01500F2423FCC0005A254B /* Storyboards */,
 			);
 			path = "Notas Diarias";
 			sourceTree = "<group>";
@@ -141,7 +179,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5C0150152423FD1F005A254B /* AddNotePresenter.swift in Sources */,
 				CCA4F03722592CAE00A2817F /* Notas_Diarias.xcdatamodeld in Sources */,
+				5C0150172423FD30005A254B /* NotesTableViewListPresenter.swift in Sources */,
 				CCA4F03122592CAE00A2817F /* ViewController.swift in Sources */,
 				CCA4F02F22592CAE00A2817F /* AppDelegate.swift in Sources */,
 				CCA4F04422592CD300A2817F /* ListagemTableViewController.swift in Sources */,
