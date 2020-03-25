@@ -22,6 +22,11 @@
 		5CE130E3242A622A0041AD1C /* BuyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE130E2242A622A0041AD1C /* BuyViewController.swift */; };
 		5CE130E5242A62460041AD1C /* CreateAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CE130E4242A62460041AD1C /* CreateAccountViewController.swift */; };
 		5CF97C63242BDF19002EF8ED /* BuyCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF97C62242BDF19002EF8ED /* BuyCoordinator.swift */; };
+		5CF97C67242BED45002EF8ED /* Buying.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF97C66242BED45002EF8ED /* Buying.swift */; };
+		5CF97C6A242BF0B1002EF8ED /* FavoritesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF97C69242BF0B1002EF8ED /* FavoritesCoordinator.swift */; };
+		5CF97C6C242BF0C7002EF8ED /* ProfileCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF97C6B242BF0C7002EF8ED /* ProfileCoordinator.swift */; };
+		5CF97C6E242BF0E3002EF8ED /* FavoritesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF97C6D242BF0E3002EF8ED /* FavoritesTableViewController.swift */; };
+		5CF97C70242BF0EE002EF8ED /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CF97C6F242BF0EE002EF8ED /* ProfileViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +59,11 @@
 		5CE130E2242A622A0041AD1C /* BuyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyViewController.swift; sourceTree = "<group>"; };
 		5CE130E4242A62460041AD1C /* CreateAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAccountViewController.swift; sourceTree = "<group>"; };
 		5CF97C62242BDF19002EF8ED /* BuyCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuyCoordinator.swift; sourceTree = "<group>"; };
+		5CF97C66242BED45002EF8ED /* Buying.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Buying.swift; sourceTree = "<group>"; };
+		5CF97C69242BF0B1002EF8ED /* FavoritesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesCoordinator.swift; sourceTree = "<group>"; };
+		5CF97C6B242BF0C7002EF8ED /* ProfileCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCoordinator.swift; sourceTree = "<group>"; };
+		5CF97C6D242BF0E3002EF8ED /* FavoritesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewController.swift; sourceTree = "<group>"; };
+		5CF97C6F242BF0EE002EF8ED /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +149,8 @@
 				5CE130DE242A5F220041AD1C /* MainViewController.swift */,
 				5CE130E2242A622A0041AD1C /* BuyViewController.swift */,
 				5CE130E4242A62460041AD1C /* CreateAccountViewController.swift */,
+				5CF97C6D242BF0E3002EF8ED /* FavoritesTableViewController.swift */,
+				5CF97C6F242BF0EE002EF8ED /* ProfileViewController.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -170,11 +182,12 @@
 		5CE130D9242A5DFB0041AD1C /* Coordinators */ = {
 			isa = PBXGroup;
 			children = (
+				5CF97C68242BF098002EF8ED /* ChildCoordinators */,
+				5CF97C65242BED1F002EF8ED /* Protocols */,
 				5CE130E6242A7DA90041AD1C /* TabBarCoordinator */,
 				5CE130DA242A5E080041AD1C /* Coordinator.swift */,
 				5CE130DC242A5E430041AD1C /* Storyboarded.swift */,
 				5CE130E0242A5F5E0041AD1C /* MainCoordinator.swift */,
-				5CF97C62242BDF19002EF8ED /* BuyCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -185,6 +198,24 @@
 				5C046A1A242BC93700BE3616 /* MainTabBarController.swift */,
 			);
 			path = TabBarCoordinator;
+			sourceTree = "<group>";
+		};
+		5CF97C65242BED1F002EF8ED /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				5CF97C66242BED45002EF8ED /* Buying.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		5CF97C68242BF098002EF8ED /* ChildCoordinators */ = {
+			isa = PBXGroup;
+			children = (
+				5CF97C69242BF0B1002EF8ED /* FavoritesCoordinator.swift */,
+				5CF97C6B242BF0C7002EF8ED /* ProfileCoordinator.swift */,
+				5CF97C62242BDF19002EF8ED /* BuyCoordinator.swift */,
+			);
+			path = ChildCoordinators;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -291,9 +322,14 @@
 				5CE130DB242A5E080041AD1C /* Coordinator.swift in Sources */,
 				5CE130E3242A622A0041AD1C /* BuyViewController.swift in Sources */,
 				5C046A1B242BC93700BE3616 /* MainTabBarController.swift in Sources */,
+				5CF97C6E242BF0E3002EF8ED /* FavoritesTableViewController.swift in Sources */,
 				5CE130E1242A5F5E0041AD1C /* MainCoordinator.swift in Sources */,
 				5CE130AF242A5D280041AD1C /* AppDelegate.swift in Sources */,
+				5CF97C70242BF0EE002EF8ED /* ProfileViewController.swift in Sources */,
+				5CF97C67242BED45002EF8ED /* Buying.swift in Sources */,
+				5CF97C6A242BF0B1002EF8ED /* FavoritesCoordinator.swift in Sources */,
 				5CE130DD242A5E430041AD1C /* Storyboarded.swift in Sources */,
+				5CF97C6C242BF0C7002EF8ED /* ProfileCoordinator.swift in Sources */,
 				5CE130DF242A5F220041AD1C /* MainViewController.swift in Sources */,
 				5CE130E5242A62460041AD1C /* CreateAccountViewController.swift in Sources */,
 				5CE130B1242A5D280041AD1C /* SceneDelegate.swift in Sources */,

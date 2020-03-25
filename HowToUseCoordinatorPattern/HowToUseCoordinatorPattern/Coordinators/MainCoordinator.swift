@@ -9,10 +9,14 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator {
+class MainCoordinator: Coordinator, Buying, AccountCreating {
+    
+    // MARK: - Variables
     
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+    
+    // MARK: - Funcs
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -20,8 +24,14 @@ class MainCoordinator: Coordinator {
     
     func start() {
         let vc = MainViewController.instantiate()
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .favorites, tag: 0)
-        vc.coordinator = self
+        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 0)
+        vc.buyAction = { [weak self] in
+            self?.buySubscription(to: vc.product.selectedSegmentIndex)
+        }
+        
+        vc.createAccountAction = {[weak self] in
+            self?.createAccount()
+        }
         navigationController.pushViewController(vc, animated: false)
     }
     
@@ -38,6 +48,22 @@ class MainCoordinator: Coordinator {
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
+    
+    func favoritesView() {
+        let child = FavoritesCoordinator(navigationController: navigationController)
+        childCoordinators.append(child)
+        child.parentCoordinator = self
+        child.start()
+    }
+    
+    func profileView() {
+        let child = ProfileCoordinator(navigationController: navigationController)
+        childCoordinators.append(child)
+        child.parentCoordinator = self
+        child.start()
+    }
+    
+    // MARK: - Remove ChildCoordinators
     
     func childDidFinish(_ child: Coordinator?) {
         for (index, coordinator) in childCoordinators.enumerated() {

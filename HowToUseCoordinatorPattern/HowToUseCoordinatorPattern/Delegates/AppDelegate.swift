@@ -17,10 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-//        let navigationController = UINavigationController()
-//        coordinator = MainCoordinator(navigationController: navigationController)
-//        coordinator?.start()
-        
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = MainTabBarController()
         window?.makeKeyAndVisible()
@@ -28,7 +24,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    // MARK: UISceneSession Lifecycle
+    // MARK: UISceneSession Lifecycle -> Scene Delegate desabled
 
 //    func application(_ application: UIApplication, configurationForConnecting connectingSceneSession: UISceneSession, options: UIScene.ConnectionOptions) -> UISceneConfiguration {
 //        // Called when a new scene session is being created.

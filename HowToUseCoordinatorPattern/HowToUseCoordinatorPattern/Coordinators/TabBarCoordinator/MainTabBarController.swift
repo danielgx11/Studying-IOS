@@ -13,7 +13,10 @@ class MainTabBarController: UITabBarController {
     // MARK: - Variables
     
     let main = MainCoordinator(navigationController: UINavigationController())
-    let buy = BuyCoordinator(navigationController: UINavigationController())
+    let favorites = FavoritesCoordinator(navigationController: UINavigationController())
+    let profile = ProfileCoordinator(navigationController: UINavigationController())
+    
+    // MARK: - Life cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,19 +27,8 @@ class MainTabBarController: UITabBarController {
     
     func setTabBar() {
         main.start()
-        buy.start()
-        viewControllers = [main.navigationController, buy.navigationController]
+        favorites.start()
+        profile.start()
+        viewControllers = [main.navigationController, favorites.navigationController, profile.navigationController]
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

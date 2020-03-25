@@ -8,44 +8,33 @@
 
 import UIKit
 
-
-
 class MainViewController: UIViewController, Storyboarded {
     
     // MARK: - Variables
     
-    weak var coordinator: MainCoordinator?
+    /// Using protocols and closures with coordinator pattern
     
-    // MARK: - Outlets
-    
+    var buyAction: (() -> Void)?
+    var createAccountAction: (() -> Void)?
+        
     // MARK: - Actions Button
     
     @IBAction func buyButton(_ sender: Any) {
-        self.coordinator?.buySubscription(to: product.selectedSegmentIndex)
+        buyAction?()
     }
     
     @IBAction func createAccountButton(_ sender: Any) {
-        coordinator?.createAccount()
+        createAccountAction?()
     }
+    
+    // MARK: - Outlets
     
     @IBOutlet weak var product: UISegmentedControl!
     
+    // MARK: - Life cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
     }
-    
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

@@ -15,10 +15,15 @@ class BuyViewController: UIViewController, Storyboarded {
     weak var coordinator: BuyCoordinator?
     var selectedProduct = 0
     
+    // MARK: - Outlets
+    
+    @IBOutlet var productSelectedLabel: UILabel!
+        
+    // MARK: - Life cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        debugPrint(selectedProduct)
+        setSelectedProduct(id: selectedProduct)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -26,15 +31,14 @@ class BuyViewController: UIViewController, Storyboarded {
         coordinator?.didFinishBuying()
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    // MARK: - Funcs
+    
+    func setSelectedProduct(id: Int) {
+        if id == 0 {
+            productSelectedLabel.text = "First product!"
+        } else {
+            productSelectedLabel.text = "Second product!"
+        }
     }
-    */
 
 }

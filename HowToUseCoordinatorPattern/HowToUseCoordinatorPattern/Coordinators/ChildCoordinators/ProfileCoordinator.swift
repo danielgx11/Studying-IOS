@@ -1,5 +1,5 @@
 //
-//  BuyCoordinator.swift
+//  ProfileCoordinator.swift
 //  HowToUseCoordinatorPattern
 //
 //  Created by Daniel Gx on 25/03/20.
@@ -8,25 +8,28 @@
 
 import UIKit
 
-class BuyCoordinator: Coordinator {
-
+class ProfileCoordinator: Coordinator {
+    
+    // MARK: - Variables
+    
     weak var parentCoordinator: MainCoordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
-    var selectedProduct = 0
+    
+    // MARK: - Funcs
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let vc = BuyViewController.instantiate()
+        let vc = ProfileViewController.instantiate()
+        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
         vc.coordinator = self
-        vc.selectedProduct = selectedProduct
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .search, tag: 1)
         navigationController.pushViewController(vc, animated: true)
     }
-    func didFinishBuying() {
+    
+    func didFinishProfile() {
         parentCoordinator?.childDidFinish(self)
     }
 }
