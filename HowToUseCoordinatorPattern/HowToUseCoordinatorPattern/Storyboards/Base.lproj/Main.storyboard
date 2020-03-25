@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Main View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController storyboardIdentifier="MainViewController" id="BYZ-38-t0r" customClass="MainViewController" customModule="HowToUseCoordinatorPattern" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YwD-gi-9H3">
+                                <rect key="frame" x="20" y="18" width="42" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Buy"/>
+                                <connections>
+                                    <action selector="buyButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="sXu-ac-2TJ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="20X-mh-c86">
+                                <rect key="frame" x="16" y="68" width="168" height="42"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <state key="normal" title="Create Account"/>
+                                <connections>
+                                    <action selector="createAccountButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a4l-Z6-uJu"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="ySj-3D-btu">
+                                <rect key="frame" x="122" y="118" width="131" height="31"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="EAy-FA-mph"/>
+                                </constraints>
+                                <segments>
+                                    <segment title="First"/>
+                                    <segment title="Second"/>
+                                </segments>
+                            </segmentedControl>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="ySj-3D-btu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="JSp-Wj-Bjt"/>
+                            <constraint firstItem="ySj-3D-btu" firstAttribute="top" secondItem="20X-mh-c86" secondAttribute="bottom" constant="8" id="gvV-Oc-O4a"/>
+                            <constraint firstItem="20X-mh-c86" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="k1r-Zq-zg4"/>
+                            <constraint firstItem="20X-mh-c86" firstAttribute="top" secondItem="YwD-gi-9H3" secondAttribute="bottom" constant="8" id="mY5-0y-KEQ"/>
+                            <constraint firstItem="YwD-gi-9H3" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="18" id="omn-5Y-KjC"/>
+                            <constraint firstItem="YwD-gi-9H3" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="s5f-xv-hE1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="product" destination="ySj-3D-btu" id="xND-h1-j9U"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.40000000000001" y="122.78860569715144"/>
+        </scene>
+        <!--Buy View Controller-->
+        <scene sceneID="uvJ-gk-SAU">
+            <objects>
+                <viewController storyboardIdentifier="BuyViewController" id="9uc-La-ObL" customClass="BuyViewController" customModule="HowToUseCoordinatorPattern" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5FF-Jw-cBX">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Buy" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nLe-MR-qVM">
+                                <rect key="frame" x="166.5" y="318.5" width="42" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="nLe-MR-qVM" firstAttribute="centerX" secondItem="5FF-Jw-cBX" secondAttribute="centerX" id="1ua-29-FWR"/>
+                            <constraint firstItem="nLe-MR-qVM" firstAttribute="centerY" secondItem="5FF-Jw-cBX" secondAttribute="centerY" id="Y4v-rK-Gmc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="VK5-Qm-A6T"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VrD-8x-Ehd" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="880" y="123"/>
+        </scene>
+        <!--Create Account View Controller-->
+        <scene sceneID="CqR-pm-Hcr">
+            <objects>
+                <viewController storyboardIdentifier="CreateAccountViewController" id="Mtt-pp-FZh" customClass="CreateAccountViewController" customModule="HowToUseCoordinatorPattern" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Tep-9D-VDu">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Account" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iZe-99-ST0">
+                                <rect key="frame" x="103.5" y="318.5" width="168" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iZe-99-ST0" firstAttribute="centerY" secondItem="Tep-9D-VDu" secondAttribute="centerY" id="07m-uM-uFj"/>
+                            <constraint firstItem="iZe-99-ST0" firstAttribute="centerX" secondItem="Tep-9D-VDu" secondAttribute="centerX" id="RPE-UK-2U3"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="KmQ-h1-flo"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3BA-MR-PzQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1604" y="123"/>
+        </scene>
+    </scenes>
+</document>
