@@ -14,6 +14,12 @@ class CreateAccountViewController: UIViewController, Storyboarded {
     
     weak var coordinator: MainCoordinator?
     
+    // MARK: - Outlets
+    
+    // MARK: - Actions button
+    
+    
+    
     // MARK: - Life cycle
 
     override func viewDidLoad() {
