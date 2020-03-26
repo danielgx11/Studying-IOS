@@ -17,3 +17,7 @@ protocol Buying: AnyObject {
 protocol AccountCreating: AnyObject {
     func createAccount()
 }
+
+protocol profile: AnyObject {
+    func profileView(name: String, email: String, phoneNumber: String, gender: String)
+}

@@ -15,6 +15,10 @@ class ProfileCoordinator: Coordinator {
     weak var parentCoordinator: MainCoordinator?
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
+    var name = "No account!"
+    var email = "No account!"
+    var phoneNumber = "No account!"
+    var gender = "No account!"
     
     // MARK: - Funcs
     
@@ -24,6 +28,10 @@ class ProfileCoordinator: Coordinator {
     
     func start() {
         let vc = ProfileViewController.instantiate()
+        vc.typedName = name
+        vc.typedEmail = email
+        vc.typedPhoneNumber = phoneNumber
+        vc.typedGender = gender
         vc.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 2)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)

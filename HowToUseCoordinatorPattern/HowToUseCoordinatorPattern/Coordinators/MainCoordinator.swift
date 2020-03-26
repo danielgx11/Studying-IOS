@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class MainCoordinator: Coordinator, Buying, AccountCreating {
+class MainCoordinator: Coordinator, Buying, AccountCreating, profile {
     
     // MARK: - Variables
     
@@ -45,6 +45,9 @@ class MainCoordinator: Coordinator, Buying, AccountCreating {
     
     func createAccount() {
         let vc = CreateAccountViewController.instantiate()
+        vc.viewProfile = { [weak self] in
+            self?.profileView(name: vc.typedName.text!, email: vc.typedEmail.text!, phoneNumber: vc.typedPhoneNumber.text!, gender: vc.confirmGender)
+        }
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }
@@ -56,8 +59,12 @@ class MainCoordinator: Coordinator, Buying, AccountCreating {
         child.start()
     }
     
-    func profileView() {
+    func profileView(name: String, email: String, phoneNumber: String, gender: String) {
         let child = ProfileCoordinator(navigationController: navigationController)
+        child.name = name
+        child.email = email
+        child.phoneNumber = phoneNumber
+        child.gender = gender
         childCoordinators.append(child)
         child.parentCoordinator = self
         child.start()
