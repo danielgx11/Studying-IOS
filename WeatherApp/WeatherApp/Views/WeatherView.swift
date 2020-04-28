@@ -33,28 +33,103 @@ class WeatherView: UIViewController, StoryboardInitialize {
     
     // MARK: - Methods
     
-    func getWeathrURLSession(latitude: String, longitude: String) {
-        guard let weatherURL = URL(string: APICLient.shared.getWeatherDataURL(latitude: latitude, longitude: longitude)) else { return }
+    func parseJSONManually(data: [String:Any]) {
+        if let main = data["main"] as? [String:Any] {
+            if let humidity = main["humidity"] as? Int {
+                humidityLabel.text = "\(humidity)"
+            }
+            if let tempreature = main["temp"] as? Double {
+                let celsius = tempreature-273.15
+                tempreatureLabel.text = "\(Int(celsius))°C"
+            }
+        }
+        if let wind = data["wind"] as? [String:Any] {
+            if let windSpeed = wind["speed"] as? Double {
+                windSpeedLabel.text = "\(windSpeed)"
+            }
+        }
         
-        URLSession.shared.dataTask(with: weatherURL) { (data, response, error) in
-            if let error = error {
-                debugPrint(error.localizedDescription)
-            }
-            guard let data = data else { return }
-            
-            do {
-                guard let weatherData = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
-                    debugPrint("There was an error converting data into JSON")
-                    return
-                }
-                debugPrint(weatherData)
-            } catch {
-                debugPrint("Error converting data into JSON")
-            }
-            
-        }.resume()
+        if let name = data["name"] as? String {
+            cityNameLabel.text = name
+        }
     }
     
+    func getWeatherWithAlamofire(latitude: String, longitude: String) { /// Request with Alamofire
+            guard let url = URL(string: APICLient.shared.getWeatherDataURL(latitude: latitude, longitude: longitude)) else {
+                debugPrint("Could not from url")
+                return
+            }
+            
+            let headers: HTTPHeaders = [
+                "Accept" : "application/json"
+            ]
+            
+            let parameters: Parameters = [:]
+            
+            AF.request(url, method: HTTPMethod.get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { [weak self] (response) in
+                guard let strongSelf = self else { return }
+                if let jsonData = response.value as? [String:Any] {
+                    DispatchQueue.main.async {
+                        strongSelf.parseJSONManually(data: jsonData)
+                    }
+                }
+            }
+            /*AF.request(url).responseJSON { (response) in
+             if let jsonData = response.value as? [String:Any] {
+             debugPrint(jsonData)
+             }
+             }*/
+    }
+    
+    func getWeatherURLSession(latitude: String, longitude: String) { /// Get request without ALAMOFIRE
+        
+        let apiKey = APICLient.shared.apiKey
+        
+        if var urlComponents = URLComponents(string: APICLient.shared.baseURL) {
+            urlComponents.query = "lat=\(latitude)&lon=\(longitude)&APPID=\(apiKey)"
+            guard let url = urlComponents.url else { return }
+            var request = URLRequest(url: url)
+            request.httpMethod = "GET"
+            request.addValue("application/json; charset=utf-8", forHTTPHeaderField: "Accept")
+            let urlSessionconfiguration = URLSessionConfiguration.default
+            let session = URLSession(configuration: urlSessionconfiguration)
+            let datatask = session.dataTask(with: request) { (data, response, error) in
+                if let error = error {
+                    debugPrint(error.localizedDescription)
+                }
+                guard let data = data else { return }
+                
+                do {
+                    guard let weatherData = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
+                        debugPrint("There was an error converting data into JSON")
+                        return
+                    }
+                    debugPrint(weatherData)
+                } catch {
+                    debugPrint("Error converting data into JSON")
+                }
+            }
+            datatask.resume()
+        }/*
+         URLSession.shared.dataTask(with: weatherURL) { (data, response, error) in
+             if let error = error {
+                 debugPrint(error.localizedDescription)
+             }
+             guard let data = data else { return }
+             
+             do {
+                 guard let weatherData = try JSONSerialization.jsonObject(with: data, options: []) as? [String:Any] else {
+                     debugPrint("There was an error converting data into JSON")
+                     return
+                 }
+                 debugPrint(weatherData)
+             } catch {
+                 debugPrint("Error converting data into JSON")
+             }
+             
+         }.resume()
+         */
+    }
 }
 
 // MARK: - Location Manager Delegate
@@ -76,7 +151,7 @@ extension WeatherView: CLLocationManagerDelegate {
         let latitude = String(location.coordinate.latitude)
         let longitude = String(location.coordinate.longitude)
         
-        getWeathrURLSession(latitude: latitude, longitude: longitude)
+        getWeatherWithAlamofire(latitude: latitude, longitude: longitude)
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
