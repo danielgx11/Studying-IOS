@@ -9,6 +9,7 @@
 import UIKit
 import Alamofire
 import CoreLocation
+import SwiftyJSON
 
 class WeatherView: UIViewController, StoryboardInitialize {
     
@@ -33,7 +34,38 @@ class WeatherView: UIViewController, StoryboardInitialize {
     
     // MARK: - Methods
     
-    func parseJSONManually(data: [String:Any]) {
+    func parseJSONWithCodable(data: Data) {
+        do {
+            let weatherObject = try JSONDecoder().decode(WeatherModel.self, from: data)
+            humidityLabel.text = "\(weatherObject.humidity)"
+            cityNameLabel.text = weatherObject.name
+            tempreatureLabel.text = "\(Int(weatherObject.tempreture))°C"
+            windSpeedLabel.text = "\(weatherObject.windSpeed)"
+        } catch let error as NSError {
+            debugPrint(error)
+        }
+    }
+    
+    func parseJSONWithSwifty(data: [String:Any]) { /// Parse JSON with SWIFTYJSON
+        let jsonData = JSON(data)
+        if let humidity = jsonData["main"]["humidity"].int {
+            humidityLabel.text = "\(humidity)"
+        }
+        if let tempreature = jsonData["main"]["temp"].double {
+            let celsius = tempreature-273.15
+            tempreatureLabel.text = "\(Int(celsius))°C"
+        }
+        
+        if let windSpeed = jsonData["wind"]["speed"].double {
+            windSpeedLabel.text = "\(windSpeed)"
+        }
+        
+        if let name = jsonData["name"].string {
+            cityNameLabel.text = name
+        }
+    }
+    
+    func parseJSONManually(data: [String:Any]) { /// Parse JSON without SWIFTYJSON
         if let main = data["main"] as? [String:Any] {
             if let humidity = main["humidity"] as? Int {
                 humidityLabel.text = "\(humidity)"
@@ -68,10 +100,10 @@ class WeatherView: UIViewController, StoryboardInitialize {
             
             AF.request(url, method: HTTPMethod.get, parameters: parameters, encoding: URLEncoding.default, headers: headers).responseJSON { [weak self] (response) in
                 guard let strongSelf = self else { return }
-                if let jsonData = response.value as? [String:Any] {
-                    DispatchQueue.main.async {
-                        strongSelf.parseJSONManually(data: jsonData)
-                    }
+                guard let data = response.data else { return }
+                
+                DispatchQueue.main.async {
+                    strongSelf.parseJSONWithCodable(data: data)
                 }
             }
             /*AF.request(url).responseJSON { (response) in

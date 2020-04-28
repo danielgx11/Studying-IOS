@@ -6,7 +6,7 @@
 //  Copyright © 2020 Daniel Gx. All rights reserved.
 //
 
-/// To generate your API key go to  https://openweathermap.org
+/// To generate your API key go to  https://openweathermap.org and create account.
 
 import Foundation
 
