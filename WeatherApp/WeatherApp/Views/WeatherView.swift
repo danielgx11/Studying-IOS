@@ -10,12 +10,14 @@ import UIKit
 import Alamofire
 import CoreLocation
 import SwiftyJSON
+import GraphKit
 
 class WeatherView: UIViewController, StoryboardInitialize {
     
     // MARK: - Properties
     
     var locationManager = CLLocationManager()
+    private lazy var graphView = GKBarGraph()
     
     @IBOutlet var cityNameLabel: UILabel!
     @IBOutlet var tempreatureLabel: UILabel!
@@ -29,6 +31,8 @@ class WeatherView: UIViewController, StoryboardInitialize {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        graphView.dataSource = self
+        graphView.draw()
         performSelector(inBackground: #selector(locationManagement), with: nil)
     }
     
@@ -205,5 +209,16 @@ extension WeatherView: CLLocationManagerDelegate {
         default:
             fatalError()
         }
+    }
+}
+
+extension WeatherView: GKBarGraphDataSource {
+
+    func numberOfBars() -> Int {
+        return 2
+    }
+    
+    func valueForBar(at index: Int) -> NSNumber! {
+        NSNumber(nonretainedObject: valueForBar(at: index))
     }
 }

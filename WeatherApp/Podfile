@@ -8,4 +8,5 @@ target 'WeatherApp' do
   # Pods for WeatherApp
   pod 'Alamofire', '~> 5.0.0.beta.1'
   pod 'SwiftyJSON', '~> 4.0'
+  pod 'GraphKit', :git => 'https://github.com/michalkonturek/GraphKit', :branch => 'master'
 end

@@ -1,3 +1,6 @@
 ${PODS_ROOT}/Target Support Files/Pods-WeatherApp/Pods-WeatherApp-frameworks.sh
 ${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/FrameAccessor/FrameAccessor.framework
+${BUILT_PRODUCTS_DIR}/GraphKit/GraphKit.framework
+${BUILT_PRODUCTS_DIR}/MKFoundationKit/MKFoundationKit.framework
 ${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework
