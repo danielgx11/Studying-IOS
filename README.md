@@ -1,3 +1,3 @@
 # Studying-IOS
 
-My personal IOS/Swift study repository.
+My personal SwiftUI study repository.
